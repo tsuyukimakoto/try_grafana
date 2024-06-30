@@ -1,0 +1,8 @@
+dbs:
+  - path: /var/lib/grafana/grafana.db
+    replicas:
+      - url: gcs://<GRAFANA_SETTINGS_BUCKET_NAME>/grafana.db # GCSのバケット名はグローバルに一意（重複できない）のでそれっぽい名前にする
+        retention: 12h
+        retention-check-interval: 3m
+        snapshot-interval: 4h
+        sync-interval: 30s
